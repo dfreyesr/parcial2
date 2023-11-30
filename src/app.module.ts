@@ -23,7 +23,7 @@ import { UsuarioEntity } from './usuario/usuario.entity/usuario.entity';
       port: 5432,
       username: 'postgres',
       password: 'postgres',
-      database: 'museum',
+      database: 'redsocial',
       entities: [FotoEntity, AlbumEntity, RedSocialEntity, UsuarioEntity],
       dropSchema: true,
       synchronize: true,

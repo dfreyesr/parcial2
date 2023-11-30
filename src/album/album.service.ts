@@ -6,7 +6,7 @@ import {
   BusinessError,
 } from '../shared/business-errors';
 import { AlbumEntity } from './album.entity/album.entity';
-import { FotoEntity } from 'src/foto/foto.entity/foto.entity';
+import { FotoEntity } from '../foto/foto.entity/foto.entity';
 
 @Injectable()
 export class AlbumService {

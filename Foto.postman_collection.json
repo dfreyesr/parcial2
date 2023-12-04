@@ -1,0 +1,368 @@
+{
+	"info": {
+		"_postman_id": "9ece2945-2e72-4738-9492-96a203596448",
+		"name": "Foto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8866907",
+		"_collection_link": "https://martian-robot-10850.postman.co/workspace/parcial1~011038bb-d279-4530-9082-2d17afb72e86/collection/8866907-9ece2945-2e72-4738-9492-96a203596448?action=share&source=collection_link&creator=8866907"
+	},
+	"item": [
+		{
+			"name": "Create foto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response contains foto id\", function () {",
+							"    var data = pm.response.json();",
+							"    pm.expect(data).to.have.property('id');",
+							"    pm.globals.set(\"foto_id\", data.id);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"ISO\": 400,\n  \"velObturacion\": 125,\n  \"apertura\": 5,\n  \"fecha\": \"2023-06-01\",\n  \"albumId\": \"1\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/foto",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"foto"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create foto",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ISO\": 400,\n  \"velObturacion\": 125,\n  \"apertura\": 5,\n  \"fecha\": \"2023-06-01\",\n  \"albumId\": \"1\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/foto",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"foto"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "72"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"48-ysUe9LGEW9ZVTYwBNrssbo4RrdM\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 04 Dec 2023 02:33:52 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ISO\": 400,\n    \"velObturacion\": 125,\n    \"apertura\": 5,\n    \"fecha\": \"2023-06-01\",\n    \"id\": 1\n}"
+				}
+			]
+		},
+		{
+			"name": "Find foto by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response matches requested foto ID\", function () {",
+							"    var data = pm.response.json();",
+							"    pm.expect(data.id).to.eql(pm.variables.get(\"foto_id\"));",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/foto/1\n",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"foto",
+						"1\n"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Find foto by id",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/foto/1\n",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"foto",
+								"1\n"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "72"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"48-La64T1Jn/KGyaF4A9/8A6W6bcHE\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 04 Dec 2023 02:37:56 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"ISO\": 400,\n    \"velObturacion\": 125,\n    \"apertura\": 5,\n    \"fecha\": \"2023-06-01\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Find all fotos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response is an array\", function () {",
+							"    var data = pm.response.json();",
+							"    pm.expect(data).to.be.an('array');",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/foto",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"foto"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Find all fotos",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/foto",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"foto"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "74"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4a-R3jTUwm644rjskXC4pGJ8WefeBA\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 04 Dec 2023 02:38:42 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"ISO\": 400,\n        \"velObturacion\": 125,\n        \"apertura\": 5,\n        \"fecha\": \"2023-06-01\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Delete foto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/foto/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"foto",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete foto",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/foto/1",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"foto",
+								"1"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 04 Dec 2023 02:40:01 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}

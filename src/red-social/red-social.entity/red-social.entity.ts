@@ -3,7 +3,7 @@ import { UsuarioEntity } from '../../usuario/usuario.entity/usuario.entity';
 
 @Entity()
 export class RedSocialEntity {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn('increment')
   id: number;
 
   @Column()

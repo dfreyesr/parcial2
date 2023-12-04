@@ -17,14 +17,14 @@ export class FotoService {
   ) {}
 
   async createFoto(fotoData: {
-    iso: number;
-    valObturacion: number;
+    ISO: number;
+    velObturacion: number;
     apertura: number;
     albumId: string;
   }): Promise<FotoEntity> {
-    const { iso, valObturacion, apertura } = fotoData;
+    const { ISO, velObturacion, apertura } = fotoData;
 
-    const parameters = [iso, valObturacion, apertura];
+    const parameters = [ISO, velObturacion, apertura];
     const limits = [100, 6400, 2, 250, 1, 32];
     let aboveMid = 0;
 

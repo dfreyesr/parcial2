@@ -1,0 +1,298 @@
+{
+	"info": {
+		"_postman_id": "51bb6503-ac57-4081-ae46-a689bff7d013",
+		"name": "Usuario",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8866907",
+		"_collection_link": "https://martian-robot-10850.postman.co/workspace/parcial1~011038bb-d279-4530-9082-2d17afb72e86/collection/8866907-51bb6503-ac57-4081-ae46-a689bff7d013?action=share&source=collection_link&creator=8866907"
+	},
+	"item": [
+		{
+			"name": "Create usuario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response contains usuario id\", function () {",
+							"    var data = pm.response.json();",
+							"    pm.expect(data).to.have.property('id');",
+							"    pm.expect(data.nombre).to.eql(\"Juan Perez\");",
+							"    pm.expect(data.telefono).to.eql(\"1234567890\");",
+							"    pm.globals.set(\"usuario_id\", data.id);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nombre\": \"Juan Perez\",\n  \"telefono\": \"1234567890\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/usuario",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"usuario"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create usuario",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Juan Perez\",\n  \"telefono\": \"1234567890\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/usuario",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"usuario"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "54"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"36-UFgBIIWxxjhd10TcmV2XiQM9hDc\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 04 Dec 2023 02:47:15 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"nombre\": \"Juan Perez\",\n    \"telefono\": \"1234567890\",\n    \"id\": 1\n}"
+				}
+			]
+		},
+		{
+			"name": "Find usuario by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response matches requested usuario ID\", function () {",
+							"    var data = pm.response.json();",
+							"    pm.expect(data.id).to.eql(pm.variables.get(\"usuario_id\"));",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/usuario/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"usuario",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Find usuario by id",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/usuario/1",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"usuario",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "54"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"36-FzUy/0LdiRKHK/7xs4bLEgrabWo\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 04 Dec 2023 02:47:50 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"nombre\": \"Juan Perez\",\n    \"telefono\": \"1234567890\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Find all usuarios",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response is an array\", function () {",
+							"    var data = pm.response.json();",
+							"    pm.expect(data).to.be.an('array');",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/usuario",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"usuario"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Find all usuarios",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/usuario",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"usuario"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "56"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"38-0sO56jgYzC8tZyx/NsdpCdTOgiw\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 04 Dec 2023 02:48:14 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"nombre\": \"Juan Perez\",\n        \"telefono\": \"1234567890\"\n    }\n]"
+				}
+			]
+		}
+	]
+}

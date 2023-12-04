@@ -3,7 +3,7 @@ import { FotoEntity } from '../../foto/foto.entity/foto.entity';
 
 @Entity()
 export class AlbumEntity {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn('increment')
   id: number;
 
   @Column('date')

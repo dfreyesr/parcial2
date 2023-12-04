@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "6c55cdc2-2bb8-4e09-b150-cd0324bbf37e",
+		"name": "Red Social",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8866907",
+		"_collection_link": "https://martian-robot-10850.postman.co/workspace/parcial1~011038bb-d279-4530-9082-2d17afb72e86/collection/8866907-6c55cdc2-2bb8-4e09-b150-cd0324bbf37e?action=share&source=collection_link&creator=8866907"
+	},
+	"item": [
+		{
+			"name": "Create red social",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response contains red social id\", function () {",
+							"    var data = pm.response.json();",
+							"    pm.expect(data).to.have.property('id');",
+							"    pm.expect(data.nombre).to.eql(\"SocialNet\");",
+							"    pm.expect(data.slogan).to.eql(\"Connecting the world, one click at a time. Empowering conversations globally.\");",
+							"    pm.globals.set(\"red_social_id\", data.id);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nombre\": \"SocialNet\",\n  \"slogan\": \"Connecting the world, one click at a time. Empowering conversations globally.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/red-social",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"red-social"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create red social",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"SocialNet\",\n  \"slogan\": \"Connecting the world, one click at a time. Empowering conversations globally.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/red-social",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"red-social"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "118"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"76-VauXR2WHIc4ccn72NW8Iik08jgU\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 04 Dec 2023 02:45:22 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"nombre\": \"SocialNet\",\n    \"slogan\": \"Connecting the world, one click at a time. Empowering conversations globally.\",\n    \"id\": 1\n}"
+				}
+			]
+		}
+	]
+}

@@ -4,7 +4,7 @@ import { UsuarioEntity } from '../../usuario/usuario.entity/usuario.entity';
 
 @Entity()
 export class FotoEntity {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn('increment')
   id: number;
 
   @Column()

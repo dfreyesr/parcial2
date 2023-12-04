@@ -10,7 +10,7 @@ import { FotoEntity } from '../../foto/foto.entity/foto.entity';
 
 @Entity()
 export class UsuarioEntity {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn('increment')
   id: number;
 
   @Column()
